@@ -1,0 +1,203 @@
+/* ===========================
+   ====== Media Queries ====== 
+   =========================== */
+
+@media only screen and (min-width : 150px) and (max-width : 780px)
+{
+	.body {
+		clear: both; 
+		margin: 0 auto; 
+		width: 90%;
+		font-size: 90%;
+	}
+	.site-logo
+	{
+		font-size:50%;
+	}
+	/* search form */
+	#searchform {
+		position: absolute;
+		top: 5px;
+		right: 0;
+		z-index: 100;
+		height: 40px;
+		width:60%;
+	}
+	#searchform #s {
+		width: 70px;
+	}
+	#searchform #s:focus {
+		width: 150px;
+	}
+	
+	.mainHeader nav {
+		background: #666;
+		font-size: 1.143em;
+		height: 160px;
+		line-height: 30px;
+		margin-bottom: 0;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+		
+	.mainHeader nav ul {
+		list-style: none; 
+		margin: 0 auto;
+		padding-left: 0;
+	}
+	
+	.mainHeader nav li {
+		margin-left: 0 auto;
+		width: 100%;
+	}
+	
+	.mainHeader nav a:link, .mainHeader nav a:visited {
+		color: #FFF;
+		display: block;
+		height: 30px;
+		padding: 5px 0;
+		text-decoration: none;
+	}
+	
+	.mainHeader nav a:active,
+	.mainHeader nav .active a:link, .mainHeader nav .active a:visited {
+		background: #CF5C3F;
+		color: #fff;
+		text-shadow: none !important;
+	}
+		
+	.mainHeader nav li a {
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+			
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+	
+	.mainHeader img {
+		width: 100%;
+		height: auto;
+		margin-bottom: 3%;
+	}
+	
+	.mainContent {
+		overflow: hidden;
+		line-height: 25px;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		margin-top: 4%;
+		margin-bottom: 2%;
+	}
+	
+	.topcontent {
+		background-color: #FFF;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;	
+		/*padding: 2% 5%;*/
+		margin-bottom: 4%;
+	}
+	
+	.bottomcontent {
+		background-color: #FFF;	
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;	
+		padding: 2% 5%;
+	}
+	
+	.content {
+		width: 100%;
+		float: left;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;	
+	}	
+
+	.post-info {
+		display: none;
+	}
+	
+	.top-sidebar {
+		width: 86%;
+		float: left;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;	
+		background-color: #FFF;	
+		margin-top: 4%;
+		margin-left: 0;
+		padding: 0 7%;
+		margin-bottom: 0;		
+	}
+	
+	.top-sidebar p {
+		width: 90%;
+	}
+
+	.middle-sidebar {
+		width: 86%;
+		float: left;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;	
+		background-color: #FFF;	
+		margin-top: 4%;
+		margin-left: 0;
+		padding: 0 7%;
+		margin-bottom: 0;	
+	}
+	
+	.middle-sidebar p {
+		width: 90%;
+	}
+	
+	.bottom-sidebar {
+		width: 86%;
+		float: left;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;	
+		background-color: #FFF;	
+		margin-top: 4%;
+		margin-left: 0%;
+		padding: 0 7%;
+		margin-bottom: 1%;
+	}
+	
+	.bottom-sidebar p {
+		width: 90%;
+	}
+		
+	.mainFooter {
+		width: 100%;
+		float: left;
+		margin: 2% 0;
+		padding-left: 0;
+		background-color: #666;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;	
+		color: #FFF;	
+	}
+	
+	.mainFooter p {
+		width: 56%;
+		margin: 2% auto;
+	}
+.item-grid{padding:0}
+.item-grid a.loading{background:none}
+.item-grid .item{display:inline-block;width:290px;height:290px;background-size:cover;background-position:50% 50%;margin:35px 15px;position:relative}
+.item-grid .item .info{opacity:1;height:45px;width:290px;position:absolute;padding:0;top:100%;background:none}
+.item-grid .item .info .name{font-size:18px;font-weight:400;color:#323236;position:absolute;left:0;bottom:8px;-ms-word-break:break-all;word-break:break-all;word-break:break-word;-webkit-hyphens:auto;-moz-hyphens:auto;hyphens:auto}
+.item-grid .item .info .name p{margin:0;width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;-o-text-overflow:ellipsis}
+.item-grid .item .info .hover-price{color:#323236;font-size:24px;position:absolute;bottom:8px;font-weight:600;right:0}
+
+	.youpasswd{
+		margin-right:55px;
+	}
+}
