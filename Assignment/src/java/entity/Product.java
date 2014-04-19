@@ -12,11 +12,39 @@ package entity;
  */
 public class Product {
     private int id;
+    private int categoryID;
     private String name;
     private float price;
     private int quantity;
+    private String description;
     private String img;
 
+    public int getCategoryID() {
+        return categoryID;
+    }
+
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Product(int id, int categoryID, String name, float price, int quantity, String description, String img) {
+        this.id = id;
+        this.categoryID = categoryID;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.description = description;
+        this.img = img;
+    }
+    
     public Product(int id, String name, float price, int quantity, String img) {
         this.id = id;
         this.name = name;

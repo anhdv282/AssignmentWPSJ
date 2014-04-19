@@ -47,10 +47,12 @@ public class DataClass {
             {
                 Product temp=new Product();
                 temp.setId(rs.getInt(1));
-                temp.setName(rs.getString(2));
-                temp.setPrice(rs.getFloat(3));
-                temp.setQuantity(rs.getInt(4));
-                temp.setImg(rs.getString(5));
+                temp.setCategoryID(rs.getInt(2));
+                temp.setName(rs.getString(3));
+                temp.setPrice(rs.getFloat(4));
+                temp.setQuantity(rs.getInt(5));
+                temp.setDescription(rs.getString(6));
+                temp.setImg(rs.getString(7));
                 list.add(temp);
             }
             rs.close();
@@ -70,10 +72,12 @@ public class DataClass {
             {
                 Product temp=new Product();
                 temp.setId(rs.getInt(1));
-                temp.setName(rs.getString(2));
-                temp.setPrice(rs.getFloat(3));
-                temp.setQuantity(rs.getInt(4));
-                temp.setImg(rs.getString(5));
+                temp.setCategoryID(rs.getInt(2));
+                temp.setName(rs.getString(3));
+                temp.setPrice(rs.getFloat(4));
+                temp.setQuantity(rs.getInt(5));
+                temp.setDescription(rs.getString(6));
+                temp.setImg(rs.getString(7));
                 list.add(temp);
             }
             rs.close();
