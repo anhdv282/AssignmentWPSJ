@@ -28,13 +28,10 @@
                     <li><a href="#">Shop</a></li>
                     <li><a href="#">News</a></li>
             </ul></nav>
-            <form id="searchform">
-                    <a href="#">FAQ </a>
-                    <a href="#">Help </a>
-                    
+            <form id="searchform">                                     
                     <form action="#" method="POST">
                         <input type="text" id="s" placeholder="Search" name="search"/>
-                        <input type="submit" value="Search"/>
+                        <div class="btnSearch"><input type="submit" value="" name=""/></div>
                     </form>
             </form>
 	</header>
@@ -45,9 +42,9 @@
                 </article>
 
                 <article class="bottomcontent">	
-                        <header>
-                                <h2 ><a href="#" rel="bookmark" title="I love cake">I love cake</a></h2>
-                        </header>
+                    <header>
+                            <h2>I love cake</h2>
+                    </header>
                     
                         
                 <div class="item-grid">
@@ -84,13 +81,14 @@
                 </div>
                         
                 </article>
+                
 		</div>
-                    <aside class="top-sidebar">
+                    <aside class="top-sidebar">                        
                             <article>
-                            <h2>Sign in</h2>
+                                <h2>Sign in</h2>
                             <form  action="#" autocomplete="on" method="post"> 
                                 <p> 
-                                        <label for="username" class="uname" data-icon="u" > Your email or username </label>
+                                    <label for="username" class="uname" data-icon="u" > Your email or username </label>
                                     <input id="username" name="username" required="required" type="text" placeholder="e-mail"/>
                                 </p>
                                 <p> 
@@ -100,10 +98,9 @@
                                 <p class="keeplogin"> 
                                     <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
                                     <label for="loginkeeping">Remember me</label>
+                                    <input type="submit" value="Login" class="btnLogin"/>
                                 </p>
-                                <p class="login button"> 
-                                    <input type="submit" value="Login" /> 
-                                </p>
+                                
                                 <p class="change_link">
                                     Not a member yet ?
                                     <a href="#toregister" class="to_register">Sign up</a>
@@ -112,8 +109,8 @@
                         </article>
                     </aside>
 
-                        <aside class="middle-sidebar">
-                                <article>
+                        <aside class="middle-sidebar">                            
+                            <article>
                                 <h2>Category</h2>
                                 <ul>
                                         <li><a href="#">Pain</a> </li>
@@ -125,13 +122,15 @@
                             </article>
                         </aside>				
 
-                        <aside class="bottom-sidebar">
-                                <article>
+                        <aside class="bottom-sidebar">                            
+                            <article>
                                 <h2>Shopping Cart</h2>
+                                <div>
                                 <p>03 items</p>
                                 <p>Totals: $1000</p>
                                 <a href="#" class="detail">Detail</a>
-                                </article>  
+                                </div>
+                            </article>  
                         </aside>	
 	</div>
 	
