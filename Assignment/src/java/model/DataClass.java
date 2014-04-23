@@ -6,6 +6,7 @@
 
 package model;
 
+import entity.Customer;
 import entity.Product;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -85,5 +86,29 @@ public class DataClass {
             Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
+    }
+    public ArrayList<Customer> getAllCustomer(String text){
+    
+    ArrayList<Customer> list=new ArrayList<>();
+        String sql="SELECT * FROM tblCustome WHERE name like '%"+text+"%'";
+        try {
+            ResultSet rs=getConnection().createStatement().executeQuery(sql);
+            while(rs.next())
+            {
+               Customer temp =new Customer();
+               temp.setId(rs.getInt("CustomeID"));
+               temp.setAddress(rs.getString("address"));
+               temp.setEmail(rs.getString("email"));
+               temp.setName(rs.getString("name"));
+               temp.setPhone(rs.getString("phone"));
+               list.add(temp);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    
+    
     }
 }
