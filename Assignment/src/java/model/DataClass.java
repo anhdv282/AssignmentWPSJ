@@ -86,4 +86,29 @@ public class DataClass {
         }
         return list;
     }
+    
+    public Product getByID(int id)
+    {
+        Product temp=null;
+        String sql="SELECT * FROM tblProduct WHERE id="+id;
+        try {
+            ResultSet rs=getConnection().createStatement().executeQuery(sql);
+            while(rs.next())
+            {
+                temp=new Product();
+                temp.setId(rs.getInt(1));
+                temp.setCategoryID(rs.getInt(2));
+                temp.setName(rs.getString(3));
+                temp.setPrice(rs.getFloat(4));
+                temp.setQuantity(rs.getInt(5));
+                temp.setDescription(rs.getString(6));
+                temp.setImg(rs.getString(7));               
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return temp;
+    }
+
 }

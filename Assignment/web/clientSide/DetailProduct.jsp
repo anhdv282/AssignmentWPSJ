@@ -48,36 +48,7 @@
                     
                         
                 <div class="item-grid">
-                    <c:choose>
-                        <c:when test="${empty param['search']}">
-                            <c:forEach var="p" items="${mrBean.data}">
-                                <div class="item" style="background-image:url(../images/${p.img})">
-                                    <div class="info">
-                                    <div class="name">
-                                        <a href="CartController?action=add&id=${p.id}"><img src="../images/cart_icon.png"/> </a>
-                                    <p><a href="Controller?action=detailProduct&id=${p.id}">${p.name}</a></p>
-                                    </div>
-                                    <div class="hover-price">${p.price}</div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                            
-                        </c:when>
-                        <c:otherwise>
-                            <c:set var="searchByName" scope="session" value="${param['search']}"/>
-                            <c:forEach var="p" items="${mrBean.getDataByName(searchByName)}">
-                                <div class="item" style="background-image:url(../images/${p.img})">
-                                    <div class="info">
-                                    <div class="name">
-                                        <a href="CartController?action=add&id=${p.id}"><img src="../images/cart_icon.png"/> </a>
-                                    <p><a href="Controller?action=detailProduct&id=${p.id}">${p.name}</a></p>
-                                    </div>
-                                    <div class="hover-price">${p.price}</div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                        </c:otherwise>
-                    </c:choose>
+                    ${param.id}
                 </div>
                         
                 </article>
