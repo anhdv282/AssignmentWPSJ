@@ -21,6 +21,25 @@ import java.util.logging.Logger;
  * @author vieta_000
  */
 public class DataClass {
+     private int pSize = 6;
+     private int total;
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+     public ArrayList<Integer> getTotalPageCustomer(){
+     ArrayList<Integer> arr=new ArrayList<>();
+     for(int i=1;i<=total;i++){
+     arr.add(i);
+     
+     }
+     return arr;
+     
+     }
     public Connection getConnection()
     {
         Connection conn=null;        
@@ -87,14 +106,18 @@ public class DataClass {
         }
         return list;
     }
-    public ArrayList<Customer> getAllCustomer(String text){
-    
+    public ArrayList<Customer> getAllCustomer(String text,String page){
+       int index=Integer.valueOf(page);
+    int count = 0;
+        int pageTotal = 0;
     ArrayList<Customer> list=new ArrayList<>();
         String sql="SELECT * FROM tblCustome WHERE name like '%"+text+"%'";
         try {
             ResultSet rs=getConnection().createStatement().executeQuery(sql);
             while(rs.next())
             {
+                 count++;
+                if ((count<=index*pSize)&&(count>=((index-1)*pSize+1))) {
                Customer temp =new Customer();
                temp.setId(rs.getInt("CustomeID"));
                temp.setAddress(rs.getString("address"));
@@ -102,8 +125,15 @@ public class DataClass {
                temp.setName(rs.getString("name"));
                temp.setPhone(rs.getString("phone"));
                list.add(temp);
+                }
             }
             rs.close();
+            if (count % pSize == 0) {
+                pageTotal = count / pSize;
+            } else {
+                pageTotal = count / pSize + 1;
+            }
+            setTotal(pageTotal);
         } catch (SQLException ex) {
             Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
         }
