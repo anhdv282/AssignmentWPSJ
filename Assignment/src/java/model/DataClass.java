@@ -193,6 +193,7 @@ public class DataClass {
         ) {
             Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
     }
+        
     return list ;
 
 }

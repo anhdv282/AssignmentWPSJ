@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Order Admin Page</title>
         <link href="../css/screen.css" rel="stylesheet" type="text/css"/>
+        <script src="../js/sorttable.js" type="text/javascript"></script>
     </head>
     <body>
         <jsp:useBean id="mrBean" scope="session" class="model.DataClass"/>
@@ -90,7 +91,7 @@
                             <li><a href="CustomerList.jsp"><b>Customer</b></a>
                                 <div class="select_sub">
                                     <ul class="sub">
-                                        <li class="select_sub"><a href="#nogo">Customer Management</a></li>
+                                        <li class="select_sub"><a href="#nogo">Order Management</a></li>
 
                                     </ul>
                                 </div>		
@@ -163,17 +164,17 @@
                                   
 
 
-                                    <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
+                                    <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table" class="sortable">
 
                                         <tr>
 
-                                            <th class="table-header-repeat line-left minwidth-1" style="max-width:70px;"><a href="">Order ID</a>	</th>
-                                            <th class="table-header-repeat line-left minwidth-1" style="max-width:70px;  "><a href="">Customer ID</a></th>
-                                            <th class="table-header-repeat line-left"><a href="">Customer Name</a></th>
-                                            <th class="table-header-repeat line-left"><a href="">Date</a></th>
-                                            <th class="table-header-repeat line-left minwidth-1" style="max-width: 100px;"><a href="">Total Price</a></th>
-                                            <th class="table-header-repeat line-left minwidth-1" style="max-width: 100px;"><a href="">Status</a></th>
-                                            <th class="table-header-options line-left minwidth-1" style="width:100px; "><a href="">Options</a></th>
+                                            <th class="table-header-repeat line-left minwidth-1" style="max-width:70px; "><a>Order ID</a>	</th>
+                                            <th class="table-header-repeat line-left minwidth-1" style="max-width:70px;  "><a>Customer ID</a></th>
+                                            <th class="table-header-repeat line-left"><a>Customer Name</a></th>
+                                            <th class="table-header-repeat line-left"><a>Date</a></th>
+                                            <th class="table-header-repeat line-left minwidth-1" style="max-width: 100px;"><a>Total Price</a></th>
+                                            <th class="table-header-repeat line-left minwidth-1" style="max-width: 100px;"><a>Status</a></th>
+                                            <th class="table-header-options line-left minwidth-1" style="width:100px; "><a>Options</a></th>
                                         </tr>
 
 
