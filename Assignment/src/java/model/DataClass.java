@@ -108,7 +108,25 @@ public class DataClass {
             Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
+    }
     
-    
+    public Product getByID(int id)
+    {
+        Product temp=null;
+        String sql="SELECT * FROM tblProduct WHERE id="+id;
+        try {
+            ResultSet rs=getConnection().createStatement().executeQuery(sql);
+            while(rs.next())
+            {
+                temp=new Product();
+                temp.setId(rs.getInt(1));
+                temp.setName(rs.getString(2));
+                temp.setPrice(rs.getFloat(3));                
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return temp;
     }
 }
