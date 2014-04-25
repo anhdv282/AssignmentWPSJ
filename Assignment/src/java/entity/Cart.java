@@ -28,7 +28,7 @@ public class Cart {
         int total = 0;
         while (content.keys().hasMoreElements()) {
             Product p = (Product)content.keys().nextElement();
-            int quantity = Integer.parseInt(content.get(p).toString());
+            int quantity = content.get(p);
             total += quantity;
         }
         return total;
@@ -38,7 +38,7 @@ public class Cart {
         float total = 0;
         while (content.keys().hasMoreElements()) {
             Product p = (Product)content.keys().nextElement();
-            int quantity = Integer.parseInt(content.get(p).toString());
+            int quantity = content.get(p);
             total += quantity * p.getPrice();
         }
         return total;

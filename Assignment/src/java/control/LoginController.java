@@ -70,6 +70,16 @@ public class LoginController extends HttpServlet {
             }
             response.sendRedirect("clientSide/Home.jsp");
         }
+        if ("adminLogin".equalsIgnoreCase(action)) {
+            String name = request.getParameter("admin");
+            String pass = request.getParameter("password");
+            AccountDAL dp = new AccountDAL();
+            if (dp.checkLogin(name, pass)) {
+                response.sendRedirect("adminSide/Product.jsp");
+            } else {
+                response.sendRedirect("Error.jsp");
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
