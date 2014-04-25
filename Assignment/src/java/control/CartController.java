@@ -47,7 +47,7 @@ public class CartController extends HttpServlet {
             }
             cart.addProduct(p);
             session.setAttribute("cart", cart);
-            response.sendRedirect("clientSide/Home.jsp");
+            response.sendRedirect("clientSide/Home.jsp?txtSearch=&page=1");
         }
         if ("del".equalsIgnoreCase(action)) {
             String id = request.getParameter("id");
@@ -60,7 +60,7 @@ public class CartController extends HttpServlet {
             }
             cart.removeProduct(p);
             session.setAttribute("cart", cart);
-            response.sendRedirect("clientSide/Home.jsp?txtSearch=&page=1");
+            response.sendRedirect("clientSide/ViewCart.jsp");
         }
         if ("edit".equalsIgnoreCase(action)) {
             String[] ids= request.getParameterValues("id");
@@ -75,7 +75,7 @@ public class CartController extends HttpServlet {
             }
             cart.updateCart(products, quantities);
             session.setAttribute("cart", cart);
-            response.sendRedirect("clientSide/Home.jsp");
+           response.sendRedirect("clientSide/ViewCart.jsp");
         }
     }
 

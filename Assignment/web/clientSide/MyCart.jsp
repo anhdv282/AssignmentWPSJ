@@ -43,7 +43,7 @@
                     <td><%=id%></td>
                     <td><%=name%></td>
                     <td><%=price%> $</td>
-                    <td><input type="number" min="1" max="10" step="1" name="quantity" value="<%=quantity%>"/> <input type="hidden" name="id" value="<%=id%>"/></td>
+                    <td><input type="number" min="1" max="100" step="1" name="quantity" value="<%=quantity%>"/> <input type="hidden" name="id" value="<%=id%>"/></td>
                     <td>$ <%=amount%> $</td>
                     <td><a href="../CartController?action=del&id=<%=id%>" >Delete</a></td>
                 </tr>
