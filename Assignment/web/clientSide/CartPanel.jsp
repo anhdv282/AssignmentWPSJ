@@ -14,8 +14,11 @@
     <body>
         <article>
 <<<<<<< HEAD
+<<<<<<< HEAD
            
 =======
+=======
+>>>>>>> b27974e0ab7f652aac1ea403b3ceef91a743bfff
             <h2>Shopping Cart</h2>
             <div>
             <c:if test="${sessionScope.cart!=null}">
