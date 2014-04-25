@@ -23,6 +23,26 @@ public class Cart {
     public Hashtable<Product,Integer> getContent() {
         return content;
     }
+    
+    public int getTotalItem() {
+        int total = 0;
+        while (content.keys().hasMoreElements()) {
+            Product p = (Product)content.keys().nextElement();
+            int quantity = Integer.parseInt(content.get(p).toString());
+            total += quantity;
+        }
+        return total;
+    }
+    
+    public float getTotalMoney() {
+        float total = 0;
+        while (content.keys().hasMoreElements()) {
+            Product p = (Product)content.keys().nextElement();
+            int quantity = Integer.parseInt(content.get(p).toString());
+            total += quantity * p.getPrice();
+        }
+        return total;
+    }
 
     public void setContent(Hashtable<Product,Integer> content) {
         this.content = content;
