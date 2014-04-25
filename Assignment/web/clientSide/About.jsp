@@ -17,20 +17,17 @@
         <link href="../css/media-queries2.css" rel="stylesheet" type="text/css"/>
     </head>
     <body class="body">
-        <jsp:useBean id="mrBean" scope="session" class="model.DataClass"/>
-        <c:if test="${param.txtSearch==null}">
-                    <c:redirect url="Home.jsp?txtSearch=&page=1"/>
-                </c:if>  
+        
         <header class="mainHeader">
             <hgroup>
                     <h1 id="site-logo"><a href="Home.jsp?txtSearch=&&page=1">I Love Shopping</a></h1>
                     <h2 id="site-description">cake cake</h2>
             </hgroup>
             <nav><ul>
-                    <li class="active"><a href="Home.jsp?txtSearch=&&page=1">Home</a></li>
-                    <li><a href="About.jsp">About</a></li>
+                    <li ><a href="Home.jsp?txtSearch=&&page=1">Home</a></li>
+                    <li class="active"><a href="About.jsp">About</a></li>
                     <li><a href="ViewCart.jsp">Shop</a></li>
-                    <li><a href="About.jsp">News</a></li>
+                    <li ><a href="About.jsp">News</a></li>
             </ul></nav>
             <form id="searchform">                                     
                     <form action="Home.jsp" method="POST">
@@ -50,28 +47,16 @@
                     <header>
                             <h2>I love cake</h2>
                     </header>
-                  
-                        
-                <div class="item-grid">
-                    
-                    <c:forEach var="p" items="${mrBean.getAllProduct(param.txtSearch,param.page)}"> 
-                        <div class="item" style="background-image:url(../images/${p.img})">
-                            
-                            <div class="info">
-                            <div class="name">
-                                <a href="../CartController?action=add&id=${p.id}"><img src="../images/cart_icon.png"/> </a>
-                                <p><a href="DetailProduct.jsp?id=${p.id}" style="color: #FFF;">${p.name}</a></p>
-                            </div>
-                            <div class="hover-price">${p.price}</div>
-                            </div>
+                    <div class="item-grid">
+                        <div style="margin-left: 30px;margin-right: 30px;">
+                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia porta arcu, eu iaculis ante scelerisque id. Cras et justo tincidunt, pellentesque enim eu, porttitor turpis. Ut a rhoncus risus. Ut sagittis hendrerit leo vel blandit. Quisque laoreet nunc suscipit, pulvinar nibh sed, gravida arcu. Maecenas lobortis tempus velit, non malesuada metus sollicitudin ac. Aliquam rhoncus, odio sed accumsan pulvinar, sapien mi molestie sapien, a eleifend eros ante non odio. Ut ullamcorper dictum turpis. Phasellus luctus tempor nulla, luctus laoreet mi sagittis ut. Ut hendrerit urna et pulvinar faucibus. Nunc bibendum porta eros ac rhoncus. Duis et ante fermentum, congue quam quis, imperdiet sem. Suspendisse quis orci suscipit, blandit eros ut, consectetur eros. In sapien sapien, pretium eget tortor tristique, aliquam dapibus lorem. Nulla arcu elit, tempus sit amet egestas eget, tristique id turpis.
+
+Duis pellentesque convallis aliquet. In ac arcu est. Aenean lorem ante, hendrerit at lectus quis, feugiat molestie leo. Vivamus consequat eros et nunc pulvinar, eget vulputate diam consequat. Vestibulum congue ligula non massa venenatis rutrum. Mauris tellus odio, consectetur id mollis sed, semper at ante. Sed ut odio eu nisl ornare auctor. Curabitur libero nibh, hendrerit ac nibh at, varius hendrerit elit.
+
+Phasellus magna est, dictum adipiscing placerat eu, venenatis quis lorem. Praesent cursus, diam at malesuada sollicitudin, elit tellus vehicula diam, vel ornare quam enim eu elit. Maecenas ut nisl eget nisl pharetra posuere. Vestibulum scelerisque eget nunc in pretium. Nunc ultricies ipsum auctor est adipiscing accumsan. Aliquam aliquam, nulla vitae pharetra pulvinar, arcu neque gravida sem, nec sodales arcu dolor in metus. Phasellus interdum luctus neque, in malesuada nisi suscipit in. Vivamus dapibus odio eget nunc elementum imperdiet ac nec massa. Nulla consectetur in mi non tristique. In lectus erat, elementum vitae magna nec, rhoncus fermentum erat.
+
+Nunc euismod enim nec luctus suscipit. Aenean viverra ac ipsum congue dictum. Duis aliquet, massa sit amet tincidunt mattis, est orci tincidunt mauris, semper aliquet purus nunc congue odio. Nam eu dolor at justo facilisis facilisis quis non elit. Mauris semper sit amet tortor at cursus. Pellentesque sapien massa, vehicula hendrerit dignissim at, auctor nec nulla. Morbi a sapien erat. Pellentesque dolor urna, dictum non velit et, consequat dapibus sem. 
                         </div>
-                    </c:forEach>                            
-                        
-                </div>
-                    <div style="text-align: center;">
-                    <c:forEach var="i" items="${mrBean.totalPageCustomer}">
-                        <a href="Home.jsp?txtSearch=${param.txtSearch}&page=${i}">${i}</a>&nbsp;
-                    </c:forEach>
                     </div>
                 </article>
                 

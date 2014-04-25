@@ -21,14 +21,14 @@
           
         <header class="mainHeader">
             <hgroup>
-                    <h1 id="site-logo"><a href="#">I Love Shopping</a></h1>
+                    <h1 id="site-logo"><a href="Home.jsp?txtSearch=&&page=1">I Love Shopping</a></h1>
                     <h2 id="site-description">cake cake</h2>
             </hgroup>
             <nav><ul>
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li class="active"><a href="Home.jsp?txtSearch=&&page=1">Home</a></li>
+                    <li><a href="About.jsp">About</a></li>
                     <li><a href="ViewCart.jsp">Shop</a></li>
-                    <li><a href="#">News</a></li>
+                    <li><a href="About.jsp">News</a></li>
             </ul></nav>
             <form id="searchform">                                     
                     <form action="Home.jsp" method="POST">
@@ -39,11 +39,7 @@
             </form>
 	</header>
         <div class="mainContent">
-            <div class="content">	
-                <article class="topcontent">	
-                        <img src="../images/blueberry-muffin-recipe1.jpg"/>					
-                </article>
-
+            <div class="content">
                 <article class="bottomcontent">	
                     <header>
                             <h2>I love cake</h2>
