@@ -9,7 +9,7 @@
 <%@taglib prefix="SearchByName" uri="/WEB-INF/tlds/myFunction"%>
 <!DOCTYPE html>
 <html>
-    <jsp:useBean id="mrBean" scope="session" class="model.DataClass"/>
+    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View Page</title>
@@ -17,6 +17,8 @@
         <link href="../css/media-queries2.css" rel="stylesheet" type="text/css"/>
     </head>
     <body class="body">
+        <jsp:useBean id="mrBean" scope="session" class="model.DataClass"/>
+          
         <header class="mainHeader">
             <hgroup>
                     <h1 id="site-logo"><a href="#">I Love Shopping</a></h1>
@@ -25,13 +27,14 @@
             <nav><ul>
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Shop</a></li>
+                    <li><a href="ViewCart.jsp">Shop</a></li>
                     <li><a href="#">News</a></li>
             </ul></nav>
             <form id="searchform">                                     
-                    <form action="#" method="POST">
-                        <input type="text" id="s" placeholder="Search" name="search"/>
-                        <div class="btnSearch"><input type="submit" value="" name=""/></div>
+                    <form action="Home.jsp" method="POST">
+                        <input type="text" id="s" placeholder="Search" name="txtSearch" value="${param.txtSearch}"/>
+                        <input type="text" value="1" name="page" style="visibility: hidden; position: absolute;"/>
+                        <div class="btnSearch"><input type="submit" value=""/></div>
                     </form>
             </form>
 	</header>
@@ -45,39 +48,28 @@
                     <header>
                             <h2>I love cake</h2>
                     </header>
-                    
+                  
                         
-                <div class="item-grid">
-                    ${param.id}
+                <div class="product">
+                    <c:forEach var="p" items="${mrBean.getProduct(param.id)}">
+                        <p class="productName">${p.name}</p>
+                        
+                        <p><img src="../images/${p.img}"/></p>
+                        <div class="productGroup1">
+                        ${p.price}$
+                        <a class="productPrice" href="../CartController?action=add&id=${p.id}"><img src="../images/cart_icon.png"/> </a>
+                        </div>
+                        <p class="productDescription">${p.description}</p>
+                    </c:forEach>    
                 </div>
-                        
+                    <div style="text-align: center;">
+                   
+                    </div>
                 </article>
                 
 		</div>
-                    <aside class="top-sidebar">                        
-                            <article>
-                                <h2>Sign in</h2>
-                            <form  action="#" autocomplete="on" method="post"> 
-                                <p> 
-                                    <label for="username" class="uname" data-icon="u" > Your email or username </label>
-                                    <input id="username" name="username" required="required" type="text" placeholder="e-mail"/>
-                                </p>
-                                <p> 
-                                    <label for="password" class="youpasswd" data-icon="p"> Your password </label>
-                                    <input id="password" name="password" required="required" type="password" placeholder="password" /> 
-                                </p>
-                                <p class="keeplogin"> 
-                                    <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
-                                    <label for="loginkeeping">Remember me</label>
-                                    <input type="submit" value="Login" class="btnLogin"/>
-                                </p>
-                                
-                                <p class="change_link">
-                                    Not a member yet ?
-                                    <a href="#toregister" class="to_register">Sign up</a>
-                                </p>
-                            </form>
-                        </article>
+                    <aside class="top-sidebar">
+                        <jsp:include page="Login.jsp" />
                     </aside>
 
                         <aside class="middle-sidebar">                            

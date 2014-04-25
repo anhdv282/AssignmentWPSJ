@@ -169,11 +169,6 @@
                                             Address: <a class="dat">${os.customerAddress}</a> &nbsp;
                                             Email: <a class="dat">${os.customerEmail}</a> &nbsp;
                                             Phone: <a class="dat">${os.customerPhone}</a> &nbsp;
-                                        
-                                               
-
-                                               
-
                                     </c:forEach>
                                     </div><br/>
                                     <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table" class="sortable">
@@ -187,9 +182,6 @@
                                             <th class="table-header-repeat line-left minwidth-1" style="max-width: 100px;"><a>Total Price</a></th>
 
                                         </tr>
-
-
-
                                         <c:forEach var="od" items="${mrBean.getOrderDetails(param.id)}">
                                             <tr>
 
@@ -199,10 +191,6 @@
                                                 <td>${od.quantity}</td>
                                                 <td>${od.sumPrice}</td>
                                             </tr>
-
-
-
-
                                         </c:forEach>     
                                     </table><br/>
                                     <div style="font-weight: bolder; font-size: large;">

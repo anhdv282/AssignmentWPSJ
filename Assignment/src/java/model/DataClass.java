@@ -122,6 +122,33 @@ public class DataClass {
         }
         return list;
     }
+    
+    public ArrayList<Product> getProduct(String id) {
+        
+        ArrayList<Product> list = new ArrayList<>();
+        String sql = "SELECT * FROM tblProduct WHERE productID = " + id ;
+        try {
+            ResultSet rs = getConnection().createStatement().executeQuery(sql);
+            while (rs.next()) {
+                
+                Product temp = new Product();
+                temp.setId(rs.getInt(1));
+                temp.setCategoryID(rs.getInt(2));
+                temp.setName(rs.getString(3));
+                temp.setPrice(rs.getFloat(4));
+                temp.setQuantity(rs.getInt(5));
+                temp.setDescription(rs.getString(6));
+                temp.setImg(rs.getString(7));
+                list.add(temp);
+                return list;
+            }
+            rs.close();  
+        } catch (SQLException ex) {
+            Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+   
     //Begin Thanh Dat code
     public int getTotal() {
         return total;
@@ -269,7 +296,7 @@ public class DataClass {
                 OrderDetails od = new OrderDetails();
                 od.setOrderID(rs.getInt("orderID"));
                 od.setProductID(rs.getInt("productID"));
-                od.setProductName(getProductNameByOrder(od.getProductID()));
+                od.setProductName(getProductNameByOrder(od.getProductID()).toString());
                 od.setPrice(Float.valueOf(rs.getObject("price").toString()));
                 od.setQuantity(rs.getInt("quantity"));
                 od.setSumPrice(od.getPrice() * od.getQuantity());
@@ -284,7 +311,7 @@ public class DataClass {
     }
 
     private String getProductNameByOrder(int id) {
-        String sql = "SELECT name FROM tblProduct WHERE productID=" + id;
+        String sql = "SELECT * FROM tblProduct WHERE productID=" + id;
         try {
             ResultSet rs = getConnection().createStatement().executeQuery(sql);
             while (rs.next()) {
