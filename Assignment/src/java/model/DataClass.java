@@ -336,14 +336,18 @@ public class DataClass {
     public Product getByID(int id)//Vui lòng đặt tên như là getProductByID cho tường minh ạ :))
     {
         Product temp = null;
-        String sql = "SELECT * FROM tblProduct WHERE id=" + id;
+        String sql = "SELECT * FROM tblProduct WHERE productID=" + id;
         try {
             ResultSet rs = getConnection().createStatement().executeQuery(sql);
             while (rs.next()) {
                 temp = new Product();
                 temp.setId(rs.getInt(1));
-                temp.setName(rs.getString(2));
-                temp.setPrice(rs.getFloat(3));
+                temp.setCategoryID(rs.getInt(2));
+                temp.setName(rs.getString(3));
+                temp.setPrice(rs.getFloat(4));
+                temp.setQuantity(rs.getInt(5));
+                temp.setDescription(rs.getString(6));
+                temp.setImg(rs.getString(7));
             }
             rs.close();
 

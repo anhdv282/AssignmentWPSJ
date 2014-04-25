@@ -9,8 +9,17 @@
         <servlet-class>control.Controller</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>UpdateOrderDetails</servlet-name>
         <servlet-class>control.UpdateOrderDetails</servlet-class>
+=======
+        <servlet-name>CartController</servlet-name>
+        <servlet-class>control.CartController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>control.LoginController</servlet-class>
+>>>>>>> 122d36152467a749c964a3c5a805870f986a48d8
     </servlet>
     <servlet-mapping>
         <servlet-name>MyServlet</servlet-name>
@@ -21,12 +30,26 @@
         <url-pattern>/Controller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>UpdateOrderDetails</servlet-name>
         <url-pattern>/UpdateOrderDetails</url-pattern>
+=======
+        <servlet-name>CartController</servlet-name>
+        <url-pattern>/CartController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/LoginController</url-pattern>
+>>>>>>> 122d36152467a749c964a3c5a805870f986a48d8
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>
+            /clientSide/Home.jsp
+        </welcome-file>
+    </welcome-file-list>
 </web-app>

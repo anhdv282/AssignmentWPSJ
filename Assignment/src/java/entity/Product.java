@@ -103,4 +103,18 @@ public class Product {
         this.quantity = quantity;
     }
     
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Product) {
+            if (((Product)o).getId() == getId()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 }
