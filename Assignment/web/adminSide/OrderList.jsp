@@ -84,7 +84,6 @@
                                 </div>		
                             </li>
                         </ul>
-
                         <div class="nav-divider">&nbsp;</div>
 
                         <ul class="select">
