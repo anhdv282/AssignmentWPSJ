@@ -14,7 +14,7 @@
     <body>
         <article>
             <c:choose>
-                <c:when test="${(empty cookie['username']) || (empty sessionScope['username'])}" >
+                <c:when test="${(empty cookie['username']) && (empty sessionScope['username'])}" >
                     <h2>Sign in</h2>
                     <form  action="../LoginController?action=login" autocomplete="on" method="post"> 
                         <p> 
