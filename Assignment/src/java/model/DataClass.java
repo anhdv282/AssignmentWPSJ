@@ -154,7 +154,8 @@ public class DataClass {
                     Order temp = new Order();
                     temp.setId(rs.getInt("orderID"));
                     temp.setCustomerID(rs.getInt("customerID"));
-                    temp.setCustomerName(getCustomerName(temp.getCustomerID()));
+                    temp.setCustomerName(getCustomerByID(temp.getCustomerID()).getName());
+                   
                     temp.setPrice(getSumaryPriceOrder(String.valueOf(temp.getId())));
 
                     temp.setDate(rs.getObject("date").toString());
@@ -175,30 +176,25 @@ public class DataClass {
 
                     }
 
-                
-                list.add(temp);
+                    list.add(temp);
+                }
             }
-        }
-        rs.close();
-        if (count % pSize == 0) {
-            pageTotal = count / pSize;
-        } else {
-            pageTotal = count / pSize + 1;
-        }
-        setTotal(pageTotal);
-    }
-    catch (SQLException ex
-
-    
-        ) {
+            rs.close();
+            if (count % pSize == 0) {
+                pageTotal = count / pSize;
+            } else {
+                pageTotal = count / pSize + 1;
+            }
+            setTotal(pageTotal);
+        } catch (SQLException ex) {
             Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return list;
+
     }
-        
-    return list ;
 
-}
-
-private float getSumaryPriceOrder(String id) {
+    private float getSumaryPriceOrder(String id) {
         ArrayList<OrderDetails> arr = getOrderDetails(id);
         float sum = 0;
         for (OrderDetails or : arr) {
@@ -207,23 +203,27 @@ private float getSumaryPriceOrder(String id) {
         return sum;
 
     }
-    private String getCustomerName(int id){
-    String sql = "SELECT name FROM tblCustome WHERE customeID=" + id;
+
+    private Customer getCustomerByID(int id) {
+        Customer cu=new Customer();
+        String sql = "SELECT * FROM tblCustome WHERE customeID=" + id;
         try {
             ResultSet rs = getConnection().createStatement().executeQuery(sql);
             while (rs.next()) {
-               return rs.getString("name");
+                cu.setId(rs.getInt("customeID"));
+                cu.setAddress(rs.getString("address"));
+                cu.setName(rs.getString("name"));
+                cu.setPhone(rs.getString("phone"));
+                cu.setEmail(rs.getString("email"));
             }
             rs.close();
-        
 
-} catch (SQLException ex) {
-            Logger.getLogger(DataClass.class  
-
-.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DataClass.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
-    return "";
-    
+        return cu;
+
     }
 
     public ArrayList<OrderDetails> getOrderDetails(String id) {
@@ -235,20 +235,101 @@ private float getSumaryPriceOrder(String id) {
                 OrderDetails od = new OrderDetails();
                 od.setOrderID(rs.getInt("orderID"));
                 od.setProductID(rs.getInt("productID"));
+                od.setProductName(getProductNameByOrder(od.getProductID()));
                 od.setPrice(Float.valueOf(rs.getObject("price").toString()));
                 od.setQuantity(rs.getInt("quantity"));
                 od.setSumPrice(od.getPrice() * od.getQuantity());
                 arr.add(od);
 
-            
-
-}
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(DataClass.class  
-
-.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataClass.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return arr;
+    }
+
+    private String getProductNameByOrder(int id) {
+        String sql = "SELECT name FROM tblProduct WHERE productID=" + id;
+        try {
+            ResultSet rs = getConnection().createStatement().executeQuery(sql);
+            while (rs.next()) {
+                return rs.getString("name");
+            }
+            rs.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DataClass.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
+        }
+        return "";
+
+    }
+    public ArrayList<Order> getOrderByID(String id){
+    
+       
+        ArrayList<Order> list = new ArrayList<>();
+        String sql = "SELECT * FROM tblOrder WHERE orderID="+id;
+        try {
+            ResultSet rs = getConnection().createStatement().executeQuery(sql);
+            while (rs.next()) {
+               
+               
+                    Order temp = new Order();
+                    temp.setId(rs.getInt("orderID"));
+                    temp.setCustomerID(rs.getInt("customerID"));
+                    temp.setCustomerName(getCustomerByID(temp.getCustomerID()).getName());
+                     temp.setCustomerAddress(getCustomerByID(temp.getCustomerID()).getAddress());
+                    temp.setCustomerPhone(getCustomerByID(temp.getCustomerID()).getPhone());
+                    temp.setCustomerEmail(getCustomerByID(temp.getCustomerID()).getEmail());
+                    temp.setPrice(getSumaryPriceOrder(String.valueOf(temp.getId())));
+
+                    temp.setDate(rs.getObject("date").toString());
+                    int st = rs.getInt("status");
+                    if (st == 0) {
+                        temp.setStatus("In process");
+                    } else {
+                        if (st == 1) {
+                            temp.setStatus("Completed");
+
+                        } else {
+                            if (st == 2) {
+
+                                temp.setStatus("Cancel");
+                            }
+
+                        }
+
+                    }
+
+                    list.add(temp);
+                    return list;
+                
+            }
+            rs.close();
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return list;
+    
+    
+    
+    }
+    public void changeStatusOrder(String id,String st){
+         String sql = "UPDATE tblOrder set status="+st+" WHERE orderID="+id;
+        try {
+            int rs = getConnection().createStatement().executeUpdate(sql);
+            
+           
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DataClass.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
 
     //End Thanh Dat code
@@ -265,12 +346,10 @@ private float getSumaryPriceOrder(String id) {
                 temp.setPrice(rs.getFloat(3));
             }
             rs.close();
-        
 
-} catch (SQLException ex) {
-            Logger.getLogger(DataClass.class  
-
-.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DataClass.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return temp;
     }
