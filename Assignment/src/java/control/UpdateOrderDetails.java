@@ -7,19 +7,18 @@
 package control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.AccountDAL;
+import model.DataClass;
 
 /**
  *
- * @author DucNM
+ * @author Devjl
  */
-public class LoginController extends HttpServlet {
+public class UpdateOrderDetails extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,44 +31,10 @@ public class LoginController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if ("login".equalsIgnoreCase(action)) {
-            String name = request.getParameter("username");
-            String pass = request.getParameter("password");
-            AccountDAL dp = new AccountDAL();
-            if (dp.checkLogin(name, pass)) {
-                String check = request.getParameter("loginkeeping");
-                if (check != null) {
-                    Cookie cookie = new Cookie("username", name);
-                    cookie.setMaxAge(30 * 24 * 60 * 60);
-                    response.addCookie(cookie);
-                }
-                HttpSession session = request.getSession();
-                session.setAttribute("username", name);
-                response.sendRedirect("clientSide/Home.jsp");
-            } else {
-                response.sendRedirect("Error.jsp");
-            }
-        }
-        if ("logout".equalsIgnoreCase(action)) {
-            Cookie cookie = null;
-            Cookie[] cookies = request.getCookies();
-            if (cookies != null) {
-                for (int i = 0; i < cookies.length; i++) {
-                    if (cookies[i].getName().equalsIgnoreCase("username")) {
-                        cookie = cookies[i];
-                        break;
-                    }
-                }
-            }
-            HttpSession session = request.getSession();
-            session.setAttribute("username", null);
-            if (cookie != null) {
-                cookie.setMaxAge(0);
-                response.addCookie(cookie);
-            }
-            response.sendRedirect("clientSide/Home.jsp");
-        }
+        DataClass da=new DataClass();
+        da.changeStatusOrder(request.getParameter("id"),request.getParameter("select"));
+        response.sendRedirect("adminSide/OrderDetails.jsp?id="+request.getParameter("id"));
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

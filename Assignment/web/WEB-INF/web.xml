@@ -9,6 +9,10 @@
         <servlet-class>control.Controller</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>UpdateOrderDetails</servlet-name>
+        <servlet-class>control.UpdateOrderDetails</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>CartController</servlet-name>
         <servlet-class>control.CartController</servlet-class>
     </servlet>
@@ -25,12 +29,17 @@
         <url-pattern>/Controller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>UpdateOrderDetails</servlet-name>
+        <url-pattern>/UpdateOrderDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>CartController</servlet-name>
         <url-pattern>/CartController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
+
     </servlet-mapping>
     <session-config>
         <session-timeout>

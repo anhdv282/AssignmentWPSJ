@@ -75,30 +75,8 @@
                 </article>
                 
 		</div>
-                    <aside class="top-sidebar">                        
-                            <article>
-                                <h2>Sign in</h2>
-                            <form  action="#" autocomplete="on" method="post"> 
-                                <p> 
-                                    <label for="username" class="uname" data-icon="u" > Your email or username </label>
-                                    <input id="username" name="username" required="required" type="text" placeholder="e-mail"/>
-                                </p>
-                                <p> 
-                                    <label for="password" class="youpasswd" data-icon="p"> Your password </label>
-                                    <input id="password" name="password" required="required" type="password" placeholder="password" /> 
-                                </p>
-                                <p class="keeplogin"> 
-                                    <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
-                                    <label for="loginkeeping">Remember me</label>
-                                    <input type="submit" value="Login" class="btnLogin"/>
-                                </p>
-                                
-                                <p class="change_link">
-                                    Not a member yet ?
-                                    <a href="#toregister" class="to_register">Sign up</a>
-                                </p>
-                            </form>
-                        </article>
+                    <aside class="top-sidebar">
+                        <jsp:include page="Login.jsp" />
                     </aside>
 
                         <aside class="middle-sidebar">                            

@@ -12,12 +12,21 @@ package entity;
  */
 public class OrderDetails {
     private int productID;
+    private String productName;
     private int orderID;
     private int quantity;
     private float price;
     private float sumPrice;
 
     public OrderDetails() {
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public OrderDetails(int productID, int orderID, int quantity, float price, float sumPrice) {
