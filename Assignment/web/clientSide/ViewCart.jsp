@@ -4,10 +4,6 @@
     Author     : DucNM
 --%>
 
-<%@page import="entity.Product"%>
-<%@page import="java.util.Enumeration"%>
-<%@page import="java.util.Hashtable"%>
-<%@page import="entity.Cart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -47,73 +43,12 @@
                     <header>
                             <h2>I love cake</h2>
                     </header>
-                    <form action="../CartController?action=edit" method="POST" class="CSSTableGenerator">
-                        <table class="sortable">
-                            <tr>
-                                <td>Product ID</td>
-                                <td>Product Name</td>
-                                <td>Product Price</td>
-                                <td>Quantity</td>
-                                <td>Amount</td>
-                                <td class="sorttable_nosort">Delete</td>
-                            </tr>
-                            <%
-                                Cart cart = (Cart) session.getAttribute("cart");
-                                Hashtable<Product,Integer> content = cart.getContent();
-                                Enumeration enumeration = content.keys();
-
-                                while(enumeration.hasMoreElements()) {
-                                    Product p = (Product)enumeration.nextElement();
-                                    int quantity = Integer.parseInt(content.get(p).toString());
-                                    int id = p.getId();
-                                    String name = p.getName();
-                                    float price = p.getPrice();
-                                    float amount = p.getPrice() * quantity;
-                            %>
-                            <tr>
-                                <td><%=id%></td>
-                                <td><%=name%></td>
-                                <td><%=price%></td>
-                                <td><input type="number" min="1" max="10" step="1" name="quantity" value="<%=quantity%>"/> <input type="hidden" name="id" value="<%=id%>"/></td>
-                                <td><%=amount%></td>
-                                <td><a href="../CartController?action=del&id=<%=id%>" >Delete</a></td>
-                            </tr>
-                            <%}%>
-                            
-                        </table>
-                            
-                    </form>
-                            <div style="text-align: center">
-                            <input type="submit" value="Update"/>
-                            <input type="submit" value="Checkout"/>
-                            </div>
+                    <jsp:include page="MyCart.jsp"/>
                 </article>
                 
 		</div>
                     <aside class="top-sidebar">                        
-                            <article>
-                                <h2>Sign in</h2>
-                            <form  action="#" autocomplete="on" method="post"> 
-                                <p> 
-                                    <label for="username" class="uname" data-icon="u" > Your email or username </label>
-                                    <input id="username" name="username" required="required" type="text" placeholder="e-mail"/>
-                                </p>
-                                <p> 
-                                    <label for="password" class="youpasswd" data-icon="p"> Your password </label>
-                                    <input id="password" name="password" required="required" type="password" placeholder="password" /> 
-                                </p>
-                                <p class="keeplogin"> 
-                                    <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
-                                    <label for="loginkeeping">Remember me</label>
-                                    <input type="submit" value="Login" class="btnLogin"/>
-                                </p>
-                                
-                                <p class="change_link">
-                                    Not a member yet ?
-                                    <a href="#toregister" class="to_register">Sign up</a>
-                                </p>
-                            </form>
-                        </article>
+                        <jsp:include page="Login.jsp" />
                     </aside>
 
                         <aside class="middle-sidebar">                            
@@ -130,14 +65,7 @@
                         </aside>				
 
                         <aside class="bottom-sidebar">                            
-                            <article>
-                                <h2>Shopping Cart</h2>
-                                <div>
-                                <p>03 items</p>
-                                <p>Totals: $1000</p>
-                                <a href="#" class="detail">Detail</a>
-                                </div>
-                            </article>  
+                            <jsp:include page="CartPanel.jsp" /> 
                         </aside>	
 	</div>
 	

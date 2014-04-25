@@ -6,6 +6,7 @@
 
 package entity;
 
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -17,11 +18,41 @@ public class Cart {
     private Hashtable<Product,Integer> content;
 
     public Cart() {
-        this.content = new Hashtable<Product,Integer>();
+        this.content = new Hashtable<>();
     }
     
     public Hashtable<Product,Integer> getContent() {
         return content;
+    }
+    
+    public int getTotalItem() {
+        int total = 0;
+        Enumeration em=content.keys();
+        while(em.hasMoreElements())
+        {
+            //nextElement is used to get key of Hashtable
+            Product key = (Product)em.nextElement();
+            //get is used to get value of key in Hashtable
+            int value=(int)content.get(key);
+            total=total+value;
+           
+        }
+        return total;
+    }
+    
+    public float getTotalMoney() {
+        float total = 0;
+        Enumeration em=content.keys();
+        while(em.hasMoreElements())
+        {
+            //nextElement is used to get key of Hashtable
+            Product key = (Product)em.nextElement();
+            //get is used to get value of key in Hashtable
+            int value=(int)content.get(key);
+            total+=value * key.getPrice();
+           
+        }
+        return total;
     }
 
     public void setContent(Hashtable<Product,Integer> content) {

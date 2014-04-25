@@ -175,7 +175,7 @@
 
                                         <tr>
 
-                                            <th class="table-header-repeat line-left minwidth-1" style="max-width:70px; "><a>Product ID</a>	</th>
+                                            
                                             <th class="table-header-repeat line-left minwidth-1" style="max-width:70px;  "><a>Product Name</a></th>
                                             <th class="table-header-repeat line-left"><a>Price</a></th>
                                             <th class="table-header-repeat line-left"><a>Quantity</a></th>
@@ -185,7 +185,7 @@
                                         <c:forEach var="od" items="${mrBean.getOrderDetails(param.id)}">
                                             <tr>
 
-                                                <td>${od.productID}</td>
+                                              
                                                 <td>${od.productName}</td>
                                                 <td>${od.price}</td>
                                                 <td>${od.quantity}</td>
@@ -196,16 +196,17 @@
                                     <div style="font-weight: bolder; font-size: large;">
                                      <c:forEach var="os" items="${mrBean.getOrderByID(param.id)}">
                                         
-                                         Order Total Price: <a class="dat">${os.price}</a> &nbsp;
-                                          Status: <a class="dat">${os.status}</a> &nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        Order Total Price: <a class="dat">${os.price}</a>&nbsp;$ &nbsp;
+                                         &nbsp;&nbsp;&nbsp; Status: <a class="dat">${os.status}</a> &nbsp;
                                           <form action="../UpdateOrderDetails?id=${param.id}" method="POST" style="float: right;">
-                                              <select  class="styledselect " name="select">
-                                    <option value="1"> Completed</option>
+                                              <select  class="styledselect" name="select">
+                                                  <option value="1"> Completed</option>
                                     <option value="2"> Cancel</option>
                                     <option value="0"> In Process</option>
                                     
                                           </select>
-                                           <input type="submit" value="Change Status"/>
+                                              <input type="submit" value="Change Status" class="styledselect"/>
                                     </form>
 
                                                

@@ -154,7 +154,7 @@
 
                                         <tr>
 
-                                            <th class="table-header-repeat line-left minwidth-1" style="width:20px;"><a>ID</a>	</th>
+                                           
                                             <th class="table-header-repeat line-left minwidth-1"><a >Customer Name</a></th>
                                             <th class="table-header-repeat line-left"><a>Email</a></th>
                                             <th class="table-header-repeat line-left"><a>Address</a></th>
@@ -167,7 +167,7 @@
                                         <c:forEach var="cus" items="${mrBean.getAllCustomer(param.txtSearch,param.page)}">
                                             <tr>
 
-                                                <td>${cus.id}</td>
+                                                
                                                 <td>${cus.name}</td>
                                                 <td>${cus.email}</td>
                                                 <td>${cus.address}</td>

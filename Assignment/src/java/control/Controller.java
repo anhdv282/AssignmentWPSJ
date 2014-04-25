@@ -38,7 +38,7 @@ public class Controller extends HttpServlet {
             DataClass db = new DataClass();
             Product temp=db.getByID(id);
             getServletContext().setAttribute("product", temp);
-                response.sendRedirect("DetailProduct.jsp");
+                response.sendRedirect("clientSide/DetailProduct.jsp");
         }
     }
 
