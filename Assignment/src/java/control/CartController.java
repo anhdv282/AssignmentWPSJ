@@ -60,7 +60,7 @@ public class CartController extends HttpServlet {
             }
             cart.removeProduct(p);
             session.setAttribute("cart", cart);
-            response.sendRedirect("clientSide/Home.jsp");
+            response.sendRedirect("clientSide/Home.jsp?txtSearch=&page=1");
         }
         if ("edit".equalsIgnoreCase(action)) {
             String[] ids= request.getParameterValues("id");

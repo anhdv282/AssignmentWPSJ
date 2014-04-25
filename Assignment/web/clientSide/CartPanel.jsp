@@ -15,6 +15,10 @@
         <article>
             <h2>Shopping Cart</h2>
             <div>
+            <c:if test="${sessionScope.cart!=null}">
+                ${sessionScope.cart.getTotalItem()} items<br/>
+                Total: ${sessionScope.cart.getTotalMoney()} $<br/>
+            </c:if>
             <a href="ViewCart.jsp" class="detail">Detail</a>
             </div>
         </article> 

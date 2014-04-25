@@ -15,8 +15,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <form action="../CartController?action=edit" method="POST" class="CSSTableGenerator">
-            <table class="sortable">
+        <form action="../CartController?action=edit" method="POST" >
+            <table class="CSSTableGenerator">
                 <tr>
                     <td>Product ID</td>
                     <td>Product Name</td>
@@ -42,9 +42,9 @@
                 <tr>
                     <td><%=id%></td>
                     <td><%=name%></td>
-                    <td><%=price%></td>
+                    <td><%=price%> $</td>
                     <td><input type="number" min="1" max="10" step="1" name="quantity" value="<%=quantity%>"/> <input type="hidden" name="id" value="<%=id%>"/></td>
-                    <td><%=amount%></td>
+                    <td>$ <%=amount%> $</td>
                     <td><a href="../CartController?action=del&id=<%=id%>" >Delete</a></td>
                 </tr>
                 <%}} else {%>
