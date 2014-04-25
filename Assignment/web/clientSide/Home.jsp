@@ -59,9 +59,9 @@
                             <div class="info">
                             <div class="name">
                                 <a href="../CartController?action=add&id=${p.id}"><img src="../images/cart_icon.png"/> </a>
-                            <p><a href="Controller?action=detailProduct&id=${p.id}">${p.name}</a></p>
+                            <p><a href="../Controller?action=detailProduct&id=${p.id}">${p.name}</a></p>
                             </div>
-                            <div class="hover-price">${p.price}</div>
+                            <div class="hover-price">${p.price} $</div>
                             </div>
                         </div>
                     </c:forEach>                            
