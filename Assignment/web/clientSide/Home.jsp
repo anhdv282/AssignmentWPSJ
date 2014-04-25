@@ -58,7 +58,7 @@
                             <div class="info">
                             <div class="name">
                                 <a href="../CartController?action=add&id=${p.id}"><img src="../images/cart_icon.png"/> </a>
-                            <p><a href="DetailProduct.jsp&id=${p.id}" style="color:#FFF;">${p.name}</a></p>
+                            <p><a href="/DetailProduct.jsp&id=${p.id}" style="color:#FFF;">${p.name}</a></p>
                             </div>
                             <div class="hover-price">${p.price} $</div>
                             </div>
