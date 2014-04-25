@@ -24,9 +24,9 @@
                     <h2 id="site-description">cake cake</h2>
             </hgroup>
             <nav><ul>
-                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="Home.jsp?txtSearch=&page=1">Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Shop</a></li>
+                    <li class="active"><a href="#">Shop</a></li>
                     <li><a href="#">News</a></li>
             </ul></nav>
             <form id="searchform">                                     

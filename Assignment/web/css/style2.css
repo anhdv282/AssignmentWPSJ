@@ -287,6 +287,10 @@ input[type="search"]::-webkit-search-cancel-button {
 .top-sidebar form{
     margin-left: 40px;
 }
+.top-sidebar .welcome{
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
 .middle-sidebar {
     width: 30%;
     float: right;
