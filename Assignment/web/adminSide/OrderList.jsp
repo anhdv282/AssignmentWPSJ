@@ -167,8 +167,8 @@
 
                                         <tr>
 
-                                            <th class="table-header-repeat line-left minwidth-1" style="max-width:70px; "><a>Order ID</a>	</th>
-                                            <th class="table-header-repeat line-left minwidth-1" style="max-width:70px;  "><a>Customer ID</a></th>
+                                            
+                                            
                                             <th class="table-header-repeat line-left"><a>Customer Name</a></th>
                                             <th class="table-header-repeat line-left"><a>Date</a></th>
                                             <th class="table-header-repeat line-left minwidth-1" style="max-width: 100px;"><a>Total Price</a></th>
@@ -181,8 +181,8 @@
                                         <c:forEach var="od" items="${mrBean.getAllOrder(param.page)}">
                                             <tr>
 
-                                                <td>${od.id}</td>
-                                                <td>${od.customerID}</td>
+                                               
+                                                
                                                  <td>${od.customerName}</td>
                                                 <td>${od.date}</td>
                                                 <td>${od.price}</td>
