@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Customer Admin Page</title>
+        <title>Order Admin Page</title>
         <link href="../css/screen.css" rel="stylesheet" type="text/css"/>
         <script src="../js/sorttable.js" type="text/javascript"></script>
     </head>
@@ -87,11 +87,11 @@
 
                         <div class="nav-divider">&nbsp;</div>
 
-                        <ul class="current">
-                            <li><a href="#nogo"><b>Customer</b></a>
+                        <ul class="select">
+                            <li><a href="CustomerList.jsp"><b>Customer</b></a>
                                 <div class="select_sub">
                                     <ul class="sub">
-                                        <li class="select_sub"><a href="#nogo">Customer Management</a></li>
+                                        <li class="select_sub"><a href="#nogo">Order Management</a></li>
 
                                     </ul>
                                 </div>		
@@ -100,8 +100,8 @@
 
                         <div class="nav-divider">&nbsp;</div>
 
-                        <ul class="select">
-                            <li><a href="OrderList.jsp"><b>Orders</b></a>
+                        <ul class="current">
+                            <li><a href="#nogo"><b>Orders</b></a>
                                 <div class="select_sub">
                                     <ul class="sub">
                                         <li><a href="#nogo">Details 1</a></li>
@@ -133,12 +133,12 @@
         <div id="content-outer">
             <!-- start content -->
             <div id="content">
-                 <c:if test="${param.txtSearch==null}">
-                                        <c:redirect url="CustomerList.jsp?txtSearch=&page=1"/>
+                 <c:if test="${param.page==null}">
+                                        <c:redirect url="OrderList.jsp?page=1"/>
                                     </c:if>
                 <!--  start page-heading -->
                 <div id="page-heading">
-                    <h1>Customer Management  - Page ${param.page}</h1> 
+                    <h1>All Order  - Page ${param.page}</h1> 
                 </div>
                 <!-- end page-heading -->
 
@@ -160,40 +160,38 @@
                                 <div id="table-content">	
                                     <!--  start product-table ..................................................................................... -->
                                      
-                                    <div style="float: right;">
-                                    <form action="CustomerList.jsp?page=1" method="POST">
-                                        Search by name: &nbsp; &nbsp;
-                                        <input type="text" name="txtSearch" value="${param.txtSearch}"/>&nbsp;&nbsp;
-                                        <input type="submit" value="Search"/>
-
-                                    </form><br/>
-                                    </div>
+                                    
                                   
 
 
-                                        <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table" class="sortable"> 
+                                    <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table" class="sortable">
 
                                         <tr>
 
-                                            <th class="table-header-repeat line-left minwidth-1" style="width:20px;"><a>ID</a>	</th>
-                                            <th class="table-header-repeat line-left minwidth-1"><a >Customer Name</a></th>
-                                            <th class="table-header-repeat line-left"><a>Email</a></th>
-                                            <th class="table-header-repeat line-left"><a>Address</a></th>
-                                            <th class="table-header-repeat line-left minwidth-1" style="max-width: 100px;"><a>Phone</a></th>
+                                            <th class="table-header-repeat line-left minwidth-1" style="max-width:70px; "><a>Order ID</a>	</th>
+                                            <th class="table-header-repeat line-left minwidth-1" style="max-width:70px;  "><a>Customer ID</a></th>
+                                            <th class="table-header-repeat line-left"><a>Customer Name</a></th>
+                                            <th class="table-header-repeat line-left"><a>Date</a></th>
+                                            <th class="table-header-repeat line-left minwidth-1" style="max-width: 100px;"><a>Total Price</a></th>
+                                            <th class="table-header-repeat line-left minwidth-1" style="max-width: 100px;"><a>Status</a></th>
                                             <th class="table-header-options line-left minwidth-1" style="width:100px; "><a>Options</a></th>
                                         </tr>
 
 
 
-                                        <c:forEach var="cus" items="${mrBean.getAllCustomer(param.txtSearch,param.page)}">
+                                        <c:forEach var="od" items="${mrBean.getAllOrder(param.page)}">
                                             <tr>
 
-                                                <td>${cus.id}</td>
-                                                <td>${cus.name}</td>
-                                                <td>${cus.email}</td>
-                                                <td>${cus.address}</td>
-                                                <td>${cus.phone}</td>
-                                                <td style="text-decoration: underline; color: #00cc33; font-weight: bold;"><a href="OrderDetails.jsp?id=${cus.id}" style="color: #009933;">View Order</td>
+                                                <td>${od.id}</td>
+                                                <td>${od.customerID}</td>
+                                                 <td>${od.customerName}</td>
+                                                <td>${od.date}</td>
+                                                <td>${od.price}</td>
+                                                <td>${od.status}</td>
+                                                <td style="text-decoration: underline; color: #00cc33; font-weight: bold;">
+                                                    <a href="OrderDetails.jsp?id=${od.id}" style="color: #009933;">View Details</a> 
+                                                   
+                                                </td>
 
 
 
@@ -207,13 +205,13 @@
                                         </c:forEach>     
                                     </table>
                                         Page: &nbsp; <c:forEach var="i" items="${mrBean.totalPageCustomer}">
-                                            <a href="CustomerList.jsp?txtSearch=${param.txtSearch}&page=${i}">${i}</a>&nbsp;
+                                            <a href="OrderList.jsp?page=${i}">${i}</a>&nbsp;
                                         
                                         
                                     </c:forEach>
                                            
                                             
-                                            <a href="CustomerList.jsp?txtSearch=&page=1" style="float: right;">Get All</a>
+                                            <a href="OrderList.jsp?page=1" style="float: right;">Get All</a>
                                     <!--  end product-table................................... --> 
 
                                 </div>
