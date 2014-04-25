@@ -16,7 +16,8 @@
     </head>
     <body>
         <form action="../CartController?action=edit" method="POST" >
-            <table class="CSSTableGenerator">
+            <div class="CSSTableGenerator">
+            <table>
                 <tr>
                     <td>Product ID</td>
                     <td>Product Name</td>
@@ -51,6 +52,7 @@
                     <td>There are no item in your cart</td>
                 <%}%>
             </table>
+            </div>
                 <div style="text-align: center">
                 <input type="submit" value="Update"/>
                 <input type="submit" value="Checkout"/>

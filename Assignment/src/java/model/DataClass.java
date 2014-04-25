@@ -172,14 +172,12 @@ public class DataClass {
         return list;
     }
     
-    public ArrayList<Product> getProduct(String id) {
-        
+    public ArrayList<Product> getProduct(int id) {
         ArrayList<Product> list = new ArrayList<>();
         String sql = "SELECT * FROM tblProduct WHERE productID = " + id ;
         try {
             ResultSet rs = getConnection().createStatement().executeQuery(sql);
-            while (rs.next()) {
-                
+            while (rs.next()) { 
                 Product temp = new Product();
                 temp.setId(rs.getInt(1));
                 temp.setCategoryID(rs.getInt(2));

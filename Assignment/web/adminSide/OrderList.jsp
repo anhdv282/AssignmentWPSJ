@@ -22,28 +22,7 @@
             <div id="page-top">
 
                 <!--  start top-search -->
-                <div id="top-search">
-                    <table border="0" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td><input type="text" value="Search" onblur="if (this.value == '') {
-                                        this.value = 'Search';
-                                    }" onfocus="if (this.value == 'Search') {
-                                                this.value = '';
-                                            }" class="top-search-inp" /></td>
-                            <td>
-                                <select  class="styledselect">
-                                    <option value=""> All</option>
-                                    <option value=""> Products</option>
-                                    <option value=""> Customers</option>
-                                    <option value=""> Orders</option>
-                                </select> 
-                            </td>
-                            <td>
-                                <input type="image" src="../images/shared/top_search_btn.gif"  />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                
                 <!--  end top-search -->
                 <div class="clear"></div>
 
@@ -63,8 +42,6 @@
                 <!-- start nav-right -->
                 <div id="nav-right">		
                     <div class="nav-divider">&nbsp;</div>
-                    <div class="showhide-account"><img src="../images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" /></div>
-                    <div class="nav-divider">&nbsp;</div>
                     <a href="" id="logout"><img src="../images/shared/nav/nav_logout.gif" width="64" height="14" alt="" /></a>
                     <div class="clear">&nbsp;</div>		
                 </div>
@@ -77,9 +54,9 @@
                             <li><a href="Product.jsp"><b>Products</b></a>
                                 <div class="select_sub show">
                                     <ul class="sub">
-                                        <li><a href="#nogo">View all products</a></li>
-                                        <li><a href="#nogo">Add product</a></li>
-                                        <li><a href="#nogo">Delete products</a></li>
+                                        <li><a href="Product.jsp">View all products</a></li>
+                                        <li><a href="AddProduct.jsp">Add product</a></li>
+                                        
                                     </ul>
                                 </div>		
                             </li>
@@ -88,12 +65,7 @@
 
                         <ul class="select">
                             <li><a href="CustomerList.jsp"><b>Customer</b></a>
-                                <div class="select_sub">
-                                    <ul class="sub">
-                                        <li class="select_sub"><a href="#nogo">Order Management</a></li>
-
-                                    </ul>
-                                </div>		
+                                		
                             </li>
                         </ul>
 
@@ -101,14 +73,7 @@
 
                         <ul class="current">
                             <li><a href="#nogo"><b>Orders</b></a>
-                                <div class="select_sub">
-                                    <ul class="sub">
-                                        <li><a href="#nogo">Details 1</a></li>
-                                        <li><a href="#nogo">Details 2</a></li>
-                                        <li><a href="#nogo">Details 3</a></li>
-
-                                    </ul>
-                                </div>
+                                
                                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
                             </li>
                         </ul>
@@ -188,14 +153,8 @@
                                                 <td>${od.price}</td>
                                                 <td>${od.status}</td>
                                                 <td style="text-decoration: underline; color: #00cc33; font-weight: bold;">
-                                                    <a href="OrderDetails.jsp?id=${od.id}" style="color: #009933;">View Details</a> 
-                                                   
+                                                    <a href="OrderDetails.jsp?id=${od.id}" style="color: #009933;">View Details</a>  
                                                 </td>
-
-
-
-
-
                                             </tr>
 
 

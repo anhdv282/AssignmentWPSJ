@@ -69,11 +69,11 @@ Nunc euismod enim nec luctus suscipit. Aenean viverra ac ipsum congue dictum. Du
                             <article>
                                 <h2>Category</h2>
                                 <ul>
-                                        <li><a href="Home.jsp?txtSearch=c&&page=1">Pain</a> </li>
-                                        <li><a href="Home.jsp?txtSearch=v&&page=1">Chocolate</a> </li>
-                                        <li><a href="Home.jsp?txtSearch=n&&page=1">Cream </a> </li>
-                                        <li><a href="Home.jsp?txtSearch=d&&page=1">Fruits </a> </li>
-                                        <li><a href="Home.jsp?txtSearch=t&&page=1">Low Calories </a> </li>
+                                    <li><a href="Home.jsp?txtSearch=c&&page=1">Pain</a> </li>
+                                    <li><a href="Home.jsp?txtSearch=v&&page=1">Chocolate</a> </li>
+                                    <li><a href="Home.jsp?txtSearch=n&&page=1">Cream </a> </li>
+                                    <li><a href="Home.jsp?txtSearch=d&&page=1">Fruits </a> </li>
+                                    <li><a href="Home.jsp?txtSearch=t&&page=1">Low Calories </a> </li>
                                 </ul> 
                             </article>
                         </aside>				

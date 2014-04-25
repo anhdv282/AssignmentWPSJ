@@ -21,11 +21,11 @@
           
         <header class="mainHeader">
             <hgroup>
-                    <h1 id="site-logo"><a href="Home.jsp?txtSearch=&&page=1">I Love Shopping</a></h1>
+                    <h1 id="site-logo"><a href="Home.jsp">I Love Shopping</a></h1>
                     <h2 id="site-description">cake cake</h2>
             </hgroup>
             <nav><ul>
-                    <li class="active"><a href="Home.jsp?txtSearch=&&page=1">Home</a></li>
+                    <li class="active"><a href="Home.jsp">Home</a></li>
                     <li><a href="About.jsp">About</a></li>
                     <li><a href="ViewCart.jsp">Shop</a></li>
                     <li><a href="About.jsp">News</a></li>
@@ -43,9 +43,7 @@
                 <article class="bottomcontent">	
                     <header>
                             <h2>I love cake</h2>
-                    </header>
-                  
-                        
+                    </header> 
                 <div class="product">
                     <c:forEach var="p" items="${mrBean.getProduct(param.id)}">
                         <p class="productName">${p.name}</p>
@@ -72,24 +70,17 @@
                             <article>
                                 <h2>Category</h2>
                                 <ul>
-                                        <li><a href="#">Pain</a> </li>
-                                        <li><a href="#">Chocolate</a> </li>
-                                        <li><a href="#">Cream </a> </li>
-                                        <li><a href="#">Fruits </a> </li>
-                                        <li><a href="#">Low Calories </a> </li>
+                                    <li><a href="Home.jsp?txtSearch=c&&page=1">Pain</a> </li>
+                                    <li><a href="Home.jsp?txtSearch=v&&page=1">Chocolate</a> </li>
+                                    <li><a href="Home.jsp?txtSearch=n&&page=1">Cream </a> </li>
+                                    <li><a href="Home.jsp?txtSearch=d&&page=1">Fruits </a> </li>
+                                    <li><a href="Home.jsp?txtSearch=t&&page=1">Low Calories </a> </li>
                                 </ul> 
                             </article>
                         </aside>				
 
                         <aside class="bottom-sidebar">                            
-                            <article>
-                                <h2>Shopping Cart</h2>
-                                <div>
-                                <p>03 items</p>
-                                <p>Totals: $1000</p>
-                                <a href="#" class="detail">Detail</a>
-                                </div>
-                            </article>  
+                            <jsp:include page="CartPanel.jsp" /> 
                         </aside>	
 	</div>
 	

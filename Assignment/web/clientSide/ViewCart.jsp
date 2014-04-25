@@ -20,10 +20,10 @@
                     <h2 id="site-description">cake cake</h2>
             </hgroup>
             <nav><ul>
-                    <li><a href="Home.jsp?txtSearch=&page=1">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li class="active"><a href="#">Shop</a></li>
-                    <li><a href="#">News</a></li>
+                    <li><a href="Home.jsp">Home</a></li>
+                    <li><a href="About.jsp">About</a></li>
+                    <li class="active"><a href="ViewCart.jsp">Shop</a></li>
+                    <li><a href="About.jsp">News</a></li>
             </ul></nav>
             <form id="searchform">                                     
                     <form action="Home.jsp" method="POST">
@@ -55,11 +55,11 @@
                             <article>
                                 <h2>Category</h2>
                                 <ul>
-                                        <li><a href="#">Pain</a> </li>
-                                        <li><a href="#">Chocolate</a> </li>
-                                        <li><a href="#">Cream </a> </li>
-                                        <li><a href="#">Fruits </a> </li>
-                                        <li><a href="#">Low Calories </a> </li>
+                                    <li><a href="Home.jsp?txtSearch=c&&page=1">Pain</a> </li>
+                                    <li><a href="Home.jsp?txtSearch=v&&page=1">Chocolate</a> </li>
+                                    <li><a href="Home.jsp?txtSearch=n&&page=1">Cream </a> </li>
+                                    <li><a href="Home.jsp?txtSearch=d&&page=1">Fruits </a> </li>
+                                    <li><a href="Home.jsp?txtSearch=t&&page=1">Low Calories </a> </li>
                                 </ul> 
                             </article>
                         </aside>				

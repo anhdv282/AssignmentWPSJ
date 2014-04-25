@@ -203,8 +203,6 @@
                 <div id="nav-right">
 
                     <div class="nav-divider">&nbsp;</div>
-                    <div class="showhide-account"><img src="../images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" /></div>
-                    <div class="nav-divider">&nbsp;</div>
                     <a href="" id="logout"><img src="../images/shared/nav/nav_logout.gif" width="64" height="14" alt="" /></a>
                     <div class="clear">&nbsp;</div>
 
@@ -222,7 +220,7 @@
 
                         <div class="nav-divider">&nbsp;</div>
 
-                        <ul class="current"><li><a href="#nogo"><b>Products</b><!--[if IE 7]><!--></a><!--<![endif]-->
+                        <ul class="current"><li><a href="Product.jsp"><b>Products</b><!--[if IE 7]><!--></a><!--<![endif]-->
                                 <!--[if lte IE 6]><table><tr><td><![endif]-->
                                 <div class="select_sub show">
                                     <ul class="sub">
@@ -236,31 +234,13 @@
 
                         <div class="nav-divider">&nbsp;</div>
 
-                        <ul class="select"><li><a href="#nogo"><b>Customers</b><!--[if IE 7]><!--></a><!--<![endif]-->
-                                <!--[if lte IE 6]><table><tr><td><![endif]-->
-                                <div class="select_sub">
-                                    <ul class="sub">
-                                        <li><a href="#nogo">View all customers</a></li>
-                                        <li><a href="#nogo">Edit customers</a></li>
-                                        <li><a href="#nogo">Delete customers</a></li>
-                                    </ul>
-                                </div>
-                                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                        <ul class="select"><li><a href="CustomerList.jsp"><b>Customers</b><!--[if IE 7]><!--></a><!--<![endif]-->
                             </li>
                         </ul>
 
                         <div class="nav-divider">&nbsp;</div>
 
-                        <ul class="select"><li><a href="#nogo"><b>Orders</b><!--[if IE 7]><!--></a><!--<![endif]-->
-                                <!--[if lte IE 6]><table><tr><td><![endif]-->
-                                <div class="select_sub">
-                                    <ul class="sub">
-                                        <li><a href="#nogo">View all orders</a></li>
-                                        <li><a href="#nogo"></a></li>
-                                        <li><a href="#nogo"></a></li>
-                                    </ul>
-                                </div>
-                                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                        <ul class="select"><li><a href="OrderList.jsp"><b>Orders</b><!--[if IE 7]><!--></a><!--<![endif]-->
                             </li>
                         </ul>
 
@@ -306,9 +286,6 @@
                                 <table border="0" width="100%" cellpadding="0" cellspacing="0">
                                     <tr valign="top">
                                         <td>
-
-
-
                                             <!-- start id-form -->
                                             <form action="../ProductServlet?action=addProduct" method="POST">
                                                 <table border="0" cellpadding="0" cellspacing="0"  id="id-form">

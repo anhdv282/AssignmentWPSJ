@@ -27,10 +27,10 @@
                     <h2 id="site-description">cake cake</h2>
             </hgroup>
             <nav><ul>
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li class="active"><a href="Home.jsp">Home</a></li>
+                    <li><a href="About.jsp">About</a></li>
                     <li><a href="ViewCart.jsp">Shop</a></li>
-                    <li><a href="#">News</a></li>
+                    <li><a href="About.jsp">News</a></li>
             </ul></nav>
             <form id="searchform">                                     
                     <form action="Home.jsp" method="POST">
@@ -50,8 +50,7 @@
                     <header>
                             <h2>I love cake</h2>
                     </header>
-                  
-                        
+
                 <div class="item-grid">
                     
                     <c:forEach var="p" items="${mrBean.getAllProduct(param.txtSearch,param.page)}">
@@ -59,7 +58,7 @@
                             <div class="info">
                             <div class="name">
                                 <a href="../CartController?action=add&id=${p.id}"><img src="../images/cart_icon.png"/> </a>
-                            <p><a href="../Controller?action=detailProduct&id=${p.id}">${p.name}</a></p>
+                            <p><a href="DetailProduct.jsp&id=${p.id}" style="color:#FFF;">${p.name}</a></p>
                             </div>
                             <div class="hover-price">${p.price} $</div>
                             </div>
@@ -83,11 +82,11 @@
                             <article>
                                 <h2>Category</h2>
                                 <ul>
-                                        <li><a href="#">Pain</a> </li>
-                                        <li><a href="#">Chocolate</a> </li>
-                                        <li><a href="#">Cream </a> </li>
-                                        <li><a href="#">Fruits </a> </li>
-                                        <li><a href="#">Low Calories </a> </li>
+                                    <li><a href="Home.jsp?txtSearch=c&&page=1">Pain</a> </li>
+                                    <li><a href="Home.jsp?txtSearch=v&&page=1">Chocolate</a> </li>
+                                    <li><a href="Home.jsp?txtSearch=n&&page=1">Cream </a> </li>
+                                    <li><a href="Home.jsp?txtSearch=d&&page=1">Fruits </a> </li>
+                                    <li><a href="Home.jsp?txtSearch=t&&page=1">Low Calories </a> </li>
                                 </ul> 
                             </article>
                         </aside>				

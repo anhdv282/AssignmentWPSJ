@@ -39,8 +39,6 @@
                 <!-- start nav-right -->
                 <div id="nav-right">		
                     <div class="nav-divider">&nbsp;</div>
-                    <div class="showhide-account"><img src="../images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" /></div>
-                    <div class="nav-divider">&nbsp;</div>
                     <a href="" id="logout"><img src="../images/shared/nav/nav_logout.gif" width="64" height="14" alt="" /></a>
                     <div class="clear">&nbsp;</div>		
                 </div>
@@ -63,29 +61,16 @@
                         <div class="nav-divider">&nbsp;</div>
 
                         <ul class="select">
-                            <li><a href="#nogo"><b>Customer</b></a>
-                                <div class="select_sub">
-                                    <ul class="sub">
-                                        <li><a href="#nogo">Details 1</a></li>
-                                        <li><a href="#nogo">Details 2</a></li>
-                                        <li><a href="#nogo">Details 3</a></li>
-                                    </ul>
-                                </div>		
+                            <li><a href="CustomerList.jsp"><b>Customer</b></a>
+                                	
                             </li>
                         </ul>
 
                         <div class="nav-divider">&nbsp;</div>
 
                         <ul class="select">
-                            <li><a href="#nogo"><b>Orders</b></a>
-                                <div class="select_sub">
-                                    <ul class="sub">
-                                        <li><a href="#nogo">Details 1</a></li>
-                                        <li><a href="#nogo">Details 2</a></li>
-                                        <li><a href="#nogo">Details 3</a></li>
-
-                                    </ul>
-                                </div>
+                            <li><a href="OrderList.jsp"><b>Orders</b></a>
+                                
                                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
                             </li>
                         </ul>
