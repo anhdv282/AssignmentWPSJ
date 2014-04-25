@@ -59,6 +59,7 @@
                             </tr>
                             <%
                                 Cart cart = (Cart) session.getAttribute("cart");
+                                if (cart != null) {
                                 Hashtable<Product,Integer> content = cart.getContent();
                                 Enumeration enumeration = content.keys();
 
@@ -78,8 +79,9 @@
                                 <td><%=amount%></td>
                                 <td><a href="../CartController?action=del&id=<%=id%>" >Delete</a></td>
                             </tr>
+                            <%}} else {%>
+                                <td>There are no item in your cart</td>
                             <%}%>
-                            
                         </table>
                             
                     </form>
@@ -91,29 +93,7 @@
                 
 		</div>
                     <aside class="top-sidebar">                        
-                            <article>
-                                <h2>Sign in</h2>
-                            <form  action="#" autocomplete="on" method="post"> 
-                                <p> 
-                                    <label for="username" class="uname" data-icon="u" > Your email or username </label>
-                                    <input id="username" name="username" required="required" type="text" placeholder="e-mail"/>
-                                </p>
-                                <p> 
-                                    <label for="password" class="youpasswd" data-icon="p"> Your password </label>
-                                    <input id="password" name="password" required="required" type="password" placeholder="password" /> 
-                                </p>
-                                <p class="keeplogin"> 
-                                    <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
-                                    <label for="loginkeeping">Remember me</label>
-                                    <input type="submit" value="Login" class="btnLogin"/>
-                                </p>
-                                
-                                <p class="change_link">
-                                    Not a member yet ?
-                                    <a href="#toregister" class="to_register">Sign up</a>
-                                </p>
-                            </form>
-                        </article>
+                        <jsp:include page="Login.jsp" />
                     </aside>
 
                         <aside class="middle-sidebar">                            
@@ -130,14 +110,7 @@
                         </aside>				
 
                         <aside class="bottom-sidebar">                            
-                            <article>
-                                <h2>Shopping Cart</h2>
-                                <div>
-                                <p>03 items</p>
-                                <p>Totals: $1000</p>
-                                <a href="#" class="detail">Detail</a>
-                                </div>
-                            </article>  
+                            <jsp:include page="CartPanel.jsp" /> 
                         </aside>	
 	</div>
 	

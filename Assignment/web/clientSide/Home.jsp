@@ -92,15 +92,7 @@
                             </article>
                         </aside>				
 
-                        <aside class="bottom-sidebar">                            
-<!--                            <article>
-                                <h2>Shopping Cart</h2>
-                                <div>
-                                <p>03 items</p>
-                                <p>Totals: $1000</p>
-                                <a href="#" class="detail">Detail</a>
-                                </div>
-                            </article>  -->
+                        <aside class="bottom-sidebar">
                             <jsp:include page="CartPanel.jsp" />
                         </aside>	
 	</div>
