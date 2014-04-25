@@ -9,7 +9,7 @@
 <%@taglib prefix="SearchByName" uri="/WEB-INF/tlds/myFunction"%>
 <!DOCTYPE html>
 <html>
-    <jsp:useBean id="mrBean" scope="session" class="model.DataClass"/>
+    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View Page</title>
@@ -17,6 +17,10 @@
         <link href="../css/media-queries2.css" rel="stylesheet" type="text/css"/>
     </head>
     <body class="body">
+        <jsp:useBean id="mrBean" scope="session" class="model.DataClass"/>
+        <c:if test="${param.txtSearch==null}">
+                    <c:redirect url="Home.jsp?txtSearch=&page=1"/>
+                </c:if>  
         <header class="mainHeader">
             <hgroup>
                     <h1 id="site-logo"><a href="#">I Love Shopping</a></h1>
@@ -29,9 +33,10 @@
                     <li><a href="#">News</a></li>
             </ul></nav>
             <form id="searchform">                                     
-                    <form action="#" method="POST">
-                        <input type="text" id="s" placeholder="Search" name="search"/>
-                        <div class="btnSearch"><input type="submit" value="" name=""/></div>
+                    <form action="Home.jsp" method="POST">
+                        <input type="text" id="s" placeholder="Search" name="txtSearch" value="${param.txtSearch}"/>
+                        <input type="text" value="1" name="page" style="visibility: hidden; position: absolute;"/>
+                        <div class="btnSearch"><input type="submit" value=""/></div>
                     </form>
             </form>
 	</header>
@@ -45,41 +50,28 @@
                     <header>
                             <h2>I love cake</h2>
                     </header>
-                    
+                  
                         
                 <div class="item-grid">
-                    <c:choose>
-                        <c:when test="${empty param['search']}">
-                            <c:forEach var="p" items="${mrBean.data}">
-                                <div class="item" style="background-image:url(../images/${p.img})">
-                                    <div class="info">
-                                    <div class="name">
-                                        <a href="../CartController?action=add&id=${p.id}"><img src="../images/cart_icon.png"/> </a>
-                                    <p><a href="Controller?action=detailProduct&id=${p.id}">${p.name}</a></p>
-                                    </div>
-                                    <div class="hover-price">${p.price}</div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                            
-                        </c:when>
-                        <c:otherwise>
-                            <c:set var="searchByName" scope="session" value="${param['search']}"/>
-                            <c:forEach var="p" items="${mrBean.getDataByName(searchByName)}">
-                                <div class="item" style="background-image:url(../images/${p.img})">
-                                    <div class="info">
-                                    <div class="name">
-                                        <a href="CartController?action=add&id=${p.id}"><img src="../images/cart_icon.png"/> </a>
-                                    <p><a href="Controller?action=detailProduct&id=${p.id}">${p.name}</a></p>
-                                    </div>
-                                    <div class="hover-price">${p.price}</div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
+                    
+                    <c:forEach var="p" items="${mrBean.getAllProduct(param.txtSearch,param.page)}">
+                        <div class="item" style="background-image:url(../images/${p.img})">
+                            <div class="info">
+                            <div class="name">
+                                <a href="../CartController?action=add&id=${p.id}"><img src="../images/cart_icon.png"/> </a>
+                            <p><a href="Controller?action=detailProduct&id=${p.id}">${p.name}</a></p>
+                            </div>
+                            <div class="hover-price">${p.price}</div>
+                            </div>
+                        </div>
+                    </c:forEach>                            
                         
+                </div>
+                    <div style="text-align: center;">
+                    <c:forEach var="i" items="${mrBean.totalPageCustomer}">
+                        <a href="Home.jsp?txtSearch=${param.txtSearch}&page=${i}">${i}</a>&nbsp;
+                    </c:forEach>
+                    </div>
                 </article>
                 
 		</div>

@@ -87,7 +87,41 @@ public class DataClass {
         }
         return list;
     }
-
+    //Viet Anh Code Begin
+    public ArrayList<Product> getAllProduct(String name, String page) {
+        int index = Integer.valueOf(page);
+        int count = 0;
+        int pageTotal = 0;
+        ArrayList<Product> list = new ArrayList<>();
+        String sql = "SELECT * FROM tblProduct WHERE name like '%" + name + "%'";
+        try {
+            ResultSet rs = getConnection().createStatement().executeQuery(sql);
+            while (rs.next()) {
+                count++;
+                if ((count <= index * pSize) && (count >= ((index - 1) * pSize + 1))) {
+                    Product temp = new Product();
+                    temp.setId(rs.getInt(1));
+                    temp.setCategoryID(rs.getInt(2));
+                    temp.setName(rs.getString(3));
+                    temp.setPrice(rs.getFloat(4));
+                    temp.setQuantity(rs.getInt(5));
+                    temp.setDescription(rs.getString(6));
+                    temp.setImg(rs.getString(7));
+                    list.add(temp);
+                }
+            }
+            rs.close();
+            if (count % pSize == 0) {
+                pageTotal = count / pSize;
+            } else {
+                pageTotal = count / pSize + 1;
+            }
+            setTotal(pageTotal);
+        } catch (SQLException ex) {
+            Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
     //Begin Thanh Dat code
     public int getTotal() {
         return total;
