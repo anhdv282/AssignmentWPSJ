@@ -18,7 +18,7 @@
         <link href="Css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <form action="CartController?action=edit" method="POST">
+        <form action="../CartController?action=edit" method="POST">
             <table class="sortable">
                 <tr>
                     <th>Product ID</th>
@@ -47,7 +47,7 @@
                     <td><%=price%></td>
                     <td><input type="number" min="1" max="10" step="1" name="quantity" value="<%=quantity%>"/> <input type="hidden" name="id" value="<%=id%>"/></td>
                     <td><%=amount%></td>
-                    <td><a href="CartController?action=del&id=<%=id%>" >Delete</a></td>
+                    <td><a href="../CartController?action=del&id=<%=id%>" >Delete</a></td>
                 </tr>
                 <%}%>
                 <tr>
