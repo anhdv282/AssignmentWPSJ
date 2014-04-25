@@ -41,13 +41,19 @@
                     <c:choose>
                         <c:when test="${not empty cookie['username']}">
                             <c:set var="username" scope="session" value="${cookie['username']}"/>
-                            Welcome ${username.getValue()}
-                            <a href="../LoginController?action=logout" >Log out</a>
+                            <h2>Welcome</h2>
+                            <div class="welcome">
+                                Welcome <b>${username.getValue()}</b>
+                                <a href="../LoginController?action=logout" >Log out</a>
+                            </div>
                         </c:when>
                         <c:otherwise>
                             <c:set var="username" scope="session" value="${sessionScope['username']}"/>
-                            Welcome ${username}
-                            <a href="../LoginController?action=logout" >Log out</a>
+                            <h2>Welcome</h2>
+                            <div class="welcome">
+                                Welcome <b>${username}</b>
+                                <a href="../LoginController?action=logout" >Log out</a>
+                            </div>
                         </c:otherwise>
                     </c:choose>
                 </c:otherwise>

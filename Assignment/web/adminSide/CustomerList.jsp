@@ -22,28 +22,7 @@
             <div id="page-top">
 
                 <!--  start top-search -->
-                <div id="top-search">
-                    <table border="0" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td><input type="text" value="Search" onblur="if (this.value == '') {
-                                        this.value = 'Search';
-                                    }" onfocus="if (this.value == 'Search') {
-                                                this.value = '';
-                                            }" class="top-search-inp" /></td>
-                            <td>
-                                <select  class="styledselect">
-                                    <option value=""> All</option>
-                                    <option value=""> Products</option>
-                                    <option value=""> Customers</option>
-                                    <option value=""> Orders</option>
-                                </select> 
-                            </td>
-                            <td>
-                                <input type="image" src="../images/shared/top_search_btn.gif"  />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                
                 <!--  end top-search -->
                 <div class="clear"></div>
 
@@ -133,9 +112,9 @@
         <div id="content-outer">
             <!-- start content -->
             <div id="content">
-                 <c:if test="${param.txtSearch==null}">
-                                        <c:redirect url="CustomerList.jsp?txtSearch=&page=1"/>
-                                    </c:if>
+                <c:if test="${param.txtSearch==null}">
+                    <c:redirect url="CustomerList.jsp?txtSearch=&page=1"/>
+                </c:if>
                 <!--  start page-heading -->
                 <div id="page-heading">
                     <h1>Customer Management  - Page ${param.page}</h1> 
@@ -194,16 +173,7 @@
                                                 <td>${cus.address}</td>
                                                 <td>${cus.phone}</td>
                                                 <td style="text-decoration: underline; color: #00cc33; font-weight: bold;"><a href="OrderDetails.jsp?id=${cus.id}" style="color: #009933;">View Order</td>
-
-
-
-
-
                                             </tr>
-
-
-
-
                                         </c:forEach>     
                                     </table>
                                         Page: &nbsp; <c:forEach var="i" items="${mrBean.totalPageCustomer}">
