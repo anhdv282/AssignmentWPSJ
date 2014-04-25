@@ -5,6 +5,10 @@
         <servlet-class>app.MyServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ProductServlet</servlet-name>
+        <servlet-class>app.ProductServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Controller</servlet-name>
         <servlet-class>control.Controller</servlet-class>
     </servlet>
@@ -27,6 +31,10 @@
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
         <url-pattern>/Controller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductServlet</servlet-name>
+        <url-pattern>/ProductServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdateOrderDetails</servlet-name>

@@ -5,12 +5,14 @@
  */
 package model;
 
+import entity.Category;
 import entity.Customer;
 import entity.Order;
 import entity.OrderDetails;
 import entity.Product;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -42,12 +44,21 @@ public class DataClass {
         return conn;
     }
 
-    public ArrayList<Product> getData() {
+    public ArrayList<Product> getData(String text, String page) {
         ArrayList<Product> list = new ArrayList<Product>();
-        String sql = "SELECT * FROM tblProduct";
+        String sql = "SELECT tblProduct.*, tblCategory.name "
+                + "FROM tblProduct "
+                + "LEFT JOIN tblCategory "
+                + "ON tblProduct.categoryID = tblCategory.categoryID "
+                + "WHERE tblProduct.name like '%"+text+"%'";
+        int index = Integer.valueOf(page);
+        int count = 0;
+        int pageTotal = 0;
         try {
             ResultSet rs = getConnection().createStatement().executeQuery(sql);
             while (rs.next()) {
+                count++;
+                if((count <= index * pSize)&&(count >= ((index - 1)*pSize + 1))){
                 Product temp = new Product();
                 temp.setId(rs.getInt(1));
                 temp.setCategoryID(rs.getInt(2));
@@ -56,7 +67,45 @@ public class DataClass {
                 temp.setQuantity(rs.getInt(5));
                 temp.setDescription(rs.getString(6));
                 temp.setImg(rs.getString(7));
+                temp.setCategoryName(rs.getString(8));
                 list.add(temp);
+                }
+            }
+            rs.close();
+            if(count%pSize == 0){
+                pageTotal = count / pSize;
+            }else{
+                pageTotal = count / pSize +1;
+            }
+            setTotal(pageTotal);
+        } catch (SQLException ex) {
+            Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    
+    public ArrayList<Product> getProductById(int id) {
+        ArrayList<Product> list = new ArrayList<Product>();
+        String sql = "SELECT tblProduct.*, tblCategory.name "
+                + "FROM tblProduct "
+                + "LEFT JOIN tblCategory "
+                + "ON tblProduct.categoryID = tblCategory.categoryID "
+                + "WHERE tblProduct.productID =" +id;
+        try {
+            ResultSet rs = getConnection().createStatement().executeQuery(sql);
+            while (rs.next()) {
+                
+                Product temp = new Product();
+                temp.setId(rs.getInt(1));
+                temp.setCategoryID(rs.getInt(2));
+                temp.setName(rs.getString(3));
+                temp.setPrice(rs.getFloat(4));
+                temp.setQuantity(rs.getInt(5));
+                temp.setDescription(rs.getString(6));
+                temp.setImg(rs.getString(7));
+                temp.setCategoryName(rs.getString(8));
+                list.add(temp);
+                
             }
             rs.close();
         } catch (SQLException ex) {
@@ -417,5 +466,95 @@ public class DataClass {
                     .getName()).log(Level.SEVERE, null, ex);
         }
         return temp;
+    }
+    //Khoa NN
+    public ArrayList<Category> getCategory()
+    {
+        ArrayList<Category> list=new ArrayList<Category>();
+        String sql = "SELECT * FROM tblCategory";
+        try {
+            ResultSet rs=getConnection().createStatement().executeQuery(sql);
+            while(rs.next())
+            {
+                Category temp=new Category();
+                temp.setCategoryID(rs.getInt(1));
+                temp.setCategoryName(rs.getString(2));
+                list.add(temp);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    
+    public boolean addProduct(int categoryID, String productName, float price, int quantity, String description, String image)
+    {
+        
+        boolean result = false;
+        String sql = "INSERT INTO tblProduct(categoryID,name,price,quantity,description,image) "
+                + "VALUES(?,?,?,?,?,?)";
+        try {
+            PreparedStatement ps = getConnection().prepareStatement(sql);
+            ps.setInt(1, categoryID);
+            ps.setString(2, productName);
+            ps.setFloat(3, price);
+            ps.setInt(4, quantity);
+            ps.setString(5, description);
+            ps.setString(6, image);
+            //int i = ps.executeUpdate();
+            if (ps.executeUpdate() > 0) {
+                result = true;
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+    
+    public boolean updateProduct(int pId, int categoryID, String productName, float price, int quantity, String description, String image)
+    {
+        
+        boolean result = false;
+        String sql = "UPDATE tblProduct "
+                + "SET categoryID=?,name=?,price=?,quantity=?,description=?,image=? "
+                + "WHERE productID=?";
+        try {
+            PreparedStatement ps = getConnection().prepareStatement(sql);
+            ps.setInt(1, categoryID);
+            ps.setString(2, productName);
+            ps.setFloat(3, price);
+            ps.setInt(4, quantity);
+            ps.setString(5, description);
+            ps.setString(6, image);
+            ps.setInt(7, pId);
+            //int i = ps.executeUpdate();
+            if (ps.executeUpdate() > 0) {
+                result = true;
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+    
+    public boolean deleteProduct(int pId)
+    {
+        
+        boolean result = false;
+        String sql = "DELETE FROM tblProduct "
+                + "WHERE productID="+pId;
+        try {
+            PreparedStatement ps = getConnection().prepareStatement(sql);
+            if (ps.executeUpdate() > 0) {
+                result = true;
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
     }
 }
