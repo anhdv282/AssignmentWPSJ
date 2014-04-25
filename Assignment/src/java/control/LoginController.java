@@ -12,7 +12,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.DataClass;
+import javax.servlet.http.HttpSession;
+import model.AccountDAL;
 
 /**
  *
@@ -35,18 +36,20 @@ public class LoginController extends HttpServlet {
         if ("login".equalsIgnoreCase(action)) {
             String name = request.getParameter("username");
             String pass = request.getParameter("password");
-            DataClass dp = new DataClass();
-//            if (dp.checkLogin(name, pass)) {
-//                String check = request.getParameter("cbRemember");
-//                if (check != null) {
-//                    Cookie cookie = new Cookie("username", name);
-//                    cookie.setMaxAge(30 * 24 * 60 * 60);
-//                    response.addCookie(cookie);
-//                }
-//                response.sendRedirect("ProductView.jsp");
-//            } else {
-//                response.sendRedirect("Error.jsp");
-//            }
+            AccountDAL dp = new AccountDAL();
+            if (dp.checkLogin(name, pass)) {
+                String check = request.getParameter("loginkeeping");
+                if (check != null) {
+                    Cookie cookie = new Cookie("username", name);
+                    cookie.setMaxAge(30 * 24 * 60 * 60);
+                    response.addCookie(cookie);
+                }
+                HttpSession session = request.getSession();
+                session.setAttribute("username", name);
+                response.sendRedirect("clientSide/Home.jsp");
+            } else {
+                response.sendRedirect("Error.jsp");
+            }
         }
         if ("logout".equalsIgnoreCase(action)) {
             Cookie cookie = null;
@@ -59,11 +62,13 @@ public class LoginController extends HttpServlet {
                     }
                 }
             }
+            HttpSession session = request.getSession();
+            session.setAttribute("username", null);
             if (cookie != null) {
                 cookie.setMaxAge(0);
                 response.addCookie(cookie);
             }
-            response.sendRedirect("Login.jsp");
+            response.sendRedirect("clientSide/Home.jsp");
         }
     }
 
