@@ -13,13 +13,7 @@
     </head>
     <body>
         <article>
-            <c:set var="cart" value="${sessionScope['cart']}"/>
-            <h2>Shopping Cart</h2>
-            <div>
-            <p>${cart.getTotalItem()}</p>
-            <p>Totals: ${cart.getTotalMoney()}</p>
-            <a href="ViewCart.jsp" class="detail">Detail</a>
-            </div>
+           
         </article> 
     </body>
 </html>
